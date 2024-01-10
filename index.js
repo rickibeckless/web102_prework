@@ -154,11 +154,14 @@ let unfundedGamesRemainingTotal = unfundedGamesList.reduce ((acc, totalRaised) =
 }, 0);
 
 let unfundedRemaining = GAMES_JSON.length - unfundedGamesList.length;
+let totalFundGoal = GAMES_JSON.reduce ((acc, totalGoal) => {
+    return acc + totalGoal.goal;
+}, 0);
 
 // create a string that explains the number of unfunded games using the ternary operator
 let isUnfunded = unfundedRemaining == 1 
-    ? `A total of $${unfundedGamesRemainingTotal.toLocaleString('en-US')} has been raised for ${unfundedGamesList.length} games. Currently ${unfundedRemaining} game is unfunded.` 
-    : `A total of $${unfundedGamesRemainingTotal.toLocaleString('en-US')} has been raised for ${unfundedGamesList.length} games. Currently ${unfundedRemaining} games are unfunded.`;
+    ? `A total of $${raised.toLocaleString('en-US')} has been raised for ${gameNum.toLocaleString('en-US')} games. While the total goal of $${totalFundGoal.toLocaleString('en-US')} is surpassed, there is currently ${unfundedRemaining} game unfunded and it needs $${unfundedGamesRemainingTotal.toLocaleString('en-US')} to reach it's goal.` 
+    : `A total of $${raised.toLocaleString('en-US')} has been raised for ${gameNum.toLocaleString('en-US')} games. While the total goal of $${totalFundGoal.toLocaleString('en-US')} is surpassed, there are currently ${unfundedRemaining} games unfunded and they need $${unfundedGamesRemainingTotal.toLocaleString('en-US')} to reach their goals.`;
 
 // create a new DOM element containing the template string and append it to the description container
 let companyDescription = document.createElement('p');
@@ -178,7 +181,14 @@ const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
 });
 
 // use destructuring and the spread operator to grab the first and second games
+const [firstGame, secondGame, ...restOfGames] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
+let topFunded = document.createElement('p');
+topFunded.innerHTML = `${firstGame.name}`;
+firstGameContainer.appendChild(topFunded);
 
 // do the same for the runner up item
+let secondFunded = document.createElement('p');
+secondFunded.innerHTML = `${secondGame.name}`;
+secondGameContainer.appendChild(secondFunded);
