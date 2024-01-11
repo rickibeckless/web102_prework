@@ -24,7 +24,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented features:
 
-<img src="https://i.ibb.co/MNVv8Ln/Funded-Games-Archive-demo-GIF.gif" title="Funded Games Archive Video Walkthrough" alt="Funded Games Archive Walkthrough">
+![Funded Games Archive Walkthrough](https://i.ibb.co/MNVv8Ln/Funded-Games-Archive-demo-GIF.gif)
 
 GIF created with [ScreenToGif](https://www.screentogif.com/) for Windows  
 
