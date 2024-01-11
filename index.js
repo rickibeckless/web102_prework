@@ -192,3 +192,42 @@ firstGameContainer.appendChild(topFunded);
 let secondFunded = document.createElement('p');
 secondFunded.innerHTML = `${secondGame.name}`;
 secondGameContainer.appendChild(secondFunded);
+
+/************************************************************************************
+ * Expand card information on click
+ */
+
+const targetGames = document.querySelectorAll(".game-card");
+
+const originalContent = [];
+targetGames.forEach((game) => {
+    originalContent.push(game.innerHTML);
+});
+
+gamesContainer.addEventListener("click", function (event) {
+    targetGames.forEach((targetGame, i) => {
+        const targetGameActive = targetGame.contains(event.target);
+
+        if (targetGameActive) {
+            let activeCard = `<div class="moreInfo"> <h3>Pledged:</h3> <p>$${GAMES_JSON[i].pledged}</p> </div> 
+                            <div class="moreInfo"> <h3>Goal:</h3> <p>$${GAMES_JSON[i].goal}</p> </div>
+                            <div class="moreInfo"> <h3>Contributions:</h3> <p>${GAMES_JSON[i].backers}</p> </div>`;
+        
+            let cardMoreInfo = document.createElement('div');
+            cardMoreInfo.classList.add("active-info");
+            cardMoreInfo.innerHTML = activeCard;
+
+            if (!targetGame.querySelector(".active-info")) {
+                targetGame.appendChild(cardMoreInfo);
+            };
+
+            targetGame.classList.add("active");
+        } else {
+            const activeInfo = targetGame.querySelector(".active-info");
+            if (activeInfo) {
+                activeInfo.remove();
+            }
+            targetGame.classList.remove("active");
+        };
+    });
+});
