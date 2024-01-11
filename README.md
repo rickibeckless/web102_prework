@@ -26,6 +26,8 @@ Here's a walkthrough of implemented features:
 
 ![Funded Games Archive Walkthrough](https://i.ibb.co/MNVv8Ln/Funded-Games-Archive-demo-GIF.gif)
 
+GIF also found at [Funded Games Archive](https://i.ibb.co/MNVv8Ln/Funded-Games-Archive-demo-GIF.gif) on ImgBB
+
 GIF created with [ScreenToGif](https://www.screentogif.com/) for Windows  
 
 ## License
